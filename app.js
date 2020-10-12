@@ -3,7 +3,7 @@ var path = require("path");
 var app = express();
 var bodyParser = require("body-parser");
 var session = require("express-session");
-var bodyParser = require('body-parser');
+var mongoose = require('mongoose')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,6 +21,7 @@ app.all("*", function (req, res, next) {
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
+mongoose.connect("mongodb://hah:123456@localhost:27017/Userin", { useNewUrlParser: true, useUnifiedTopology: true }).then(data => { console.log('数据库连接成功') });
 //引入字符串模板快
 app.engine("html", require("express-art-template"));
 app.set("views", path.join(__dirname, "./views/"));
@@ -46,6 +47,6 @@ app.use(
 
 //挂载路由
 app.use(router);
-app.listen(3000, function () {
+app.listen(7060, function () {
   console.log("running...");
 });
