@@ -21,7 +21,7 @@ app.all("*", function (req, res, next) {
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
-mongoose.connect("mongodb://hah:123456@localhost:27017/Userin", { useNewUrlParser: true, useUnifiedTopology: true }).then(data => { console.log('数据库连接成功') });
+mongoose.connect("mongodb://hah:123456@47.105.222.69:27017/Userin", { useNewUrlParser: true, useUnifiedTopology: true }).then(data => { console.log('数据库连接成功') });
 //引入字符串模板快
 app.engine("html", require("express-art-template"));
 app.set("views", path.join(__dirname, "./views/"));
